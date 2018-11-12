@@ -1,9 +1,3 @@
-/*
- * @Author: Jan-superman 
- * @Date: 2018-09-27 20:38:37 
- * @Last Modified by: Jan-superman
- * @Last Modified time: 2018-10-24 16:11:55
- */
 
 import React, { PureComponent } from 'react';
 import { Button, Toast } from 'antd-mobile';
