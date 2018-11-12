@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Button, Toast } from 'antd-mobile';
+import ToucherManageComponent from '@/components/ToucherManage';
 
 class ToucherManage extends PureComponent {
   componentDidMount() {
@@ -11,12 +12,10 @@ class ToucherManage extends PureComponent {
   };
 
   render() {
-    const { route } = this.props;
     return (
       <div>
-        <Button type="default" onClick={this.showToast}>
-          {route.title}
-        </Button>
+
+        <ToucherManageComponent />
       </div>
     );
   }
