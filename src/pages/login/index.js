@@ -15,12 +15,13 @@ class Login extends PureComponent {
     console.log('loginModel', route.loginModel);
 
     return (
-      <div>
+      <div style={{ backgroundColor:"white", height:"100%" }}>
         <div style={{ height: 200, textAlign: 'center' }}>
           <div>
             <img
               style={{ marginTop: 30 }}
-              src="https://ws4.sinaimg.cn/large/006tNbRwly1fx52qtjvsyj302o02oa9v.jpg"
+              src="https://ws4.sinaimg.cn/large/006tNbRwly1fx6jyiybgzj307c07g0sv.jpg"
+              height="90px"
               alt=""
             />
           </div>

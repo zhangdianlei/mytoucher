@@ -4,15 +4,36 @@ import { Button, Col, Row } from 'antd';
 import router from 'umi/router';
 import { connect } from 'dva';
 
+const namespace = 'loginModel';
 
-// import { createForm } from 'rc-form';
+const mapStateToProps = (state) => {
+  const result = state[namespace].list;
+  console.log(result);
+  return{
+    result
+  }
+};
 
-// const Item = List.Item;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetSmsCode: (mobile) => {
+
+      const action = {
+        type: `${namespace}/getSmsCode`,
+        payload: mobile,
+      };
+      dispatch(action);
+
+    },
+
+  };
+};
+
 @connect(({ loginModel }) => ({
   loginModel,
 }))
 
-
+@connect(mapStateToProps, mapDispatchToProps)
 class LoginInput extends React.Component {
   state = {
     mobile: 0,
@@ -26,7 +47,6 @@ class LoginInput extends React.Component {
   };
 
   componentDidMount() {
-    console.log('this.props.loginModel.type:', this.props.loginModel.type);
     if (this.props.loginModel.type) {
       console.log('处理url地址');
     }
@@ -42,10 +62,8 @@ class LoginInput extends React.Component {
     }
   };
 
-  getSMSCode = async(time, mobile) => {
-    // mobile = mobile.replace(/\s+/g,"");
-    console.log(mobile);
-    // mobile = 18253163738;
+  getSMSCode = async (time, mobile) => {
+
     let regPhone = /^((1[3-8][0-9])+\d{8})$/;
     if (!regPhone.test(mobile)) {
       return Toast.fail('请检查手机号是否正确');
@@ -54,10 +72,9 @@ class LoginInput extends React.Component {
         time: time || 60,
       });
       this.countDown();
-
+      this.props.onGetSmsCode(mobile);
 
     }
-
   };
 
   countDown() {

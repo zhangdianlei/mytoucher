@@ -131,6 +131,7 @@ class ToucherManage extends React.Component {
         >
         </AndtList>
 
+        <WhiteSpace size="lg" />
         <Item>
           <div style={{fontSize:"14px", color:"#595959"}}>
             可选服务
