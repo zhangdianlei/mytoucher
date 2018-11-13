@@ -1,9 +1,3 @@
-/*
- * @Author: Jan-superman 
- * @Date: 2018-09-27 20:38:14 
- * @Last Modified by: Jan-superman
- * @Last Modified time: 2018-11-07 23:17:13
- */
 
 import React, { PureComponent } from 'react';
 import MenuBar from '@/components/MenuBar';
@@ -15,7 +9,6 @@ import '@/layouts/nprogress.less';
 NProgress.configure({ showSpinner: false });
 
 // 底部有bar菜单
-const BarRoutes = ['/shop', '/', '/me', '/category'];
 
 class BasicLayout extends PureComponent {
   render() {
@@ -33,13 +26,9 @@ class BasicLayout extends PureComponent {
       }
     }
 
-    if (BarRoutes.indexOf(location.pathname) < 0) {
-      return <div>{children}</div>;
-    }
-
     return (
       <div style={{ overflowX: 'hidden' }}>
-        <MenuBar pathname={location.pathname}>{children}</MenuBar>
+        {children}
       </div>
     );
   }

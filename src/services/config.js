@@ -1,9 +1,3 @@
-/*
- * @Author: Jan-superman 
- * @Date: 2018-10-14 16:02:44 
- * @Last Modified by:   Jan-superman 
- * @Last Modified time: 2018-10-14 16:02:44 
- */
 
 import { stringify } from 'qs';
 import request from './request';

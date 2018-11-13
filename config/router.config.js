@@ -3,7 +3,8 @@ export default [
     path: '/',
     component: '../layouts/BasicLayout',
     routes: [
-      { path: '/', component: './index/index', title: '首页' },
+      { path: '/', component: './welcome/index', title: '首页' },
+      // { path: '/', component: './index/index', title: '首页' },
       { path: '/category', component: './category/index', title: '分类' },
       // { path: '/shop', component: './shop/index', title: '购物车' },
       { path: '/me', component: './login/index', title: '登录' },

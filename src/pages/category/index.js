@@ -1,9 +1,3 @@
-/*
- * @Author: Jan-superman 
- * @Date: 2018-09-27 20:39:02 
- * @Last Modified by: Jan-superman
- * @Last Modified time: 2018-10-24 18:39:57
- */
 
 import React, { PureComponent } from 'react';
 import { connect } from 'dva';

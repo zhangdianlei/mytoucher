@@ -1,9 +1,4 @@
-/*
- * @Author: Jan-superman 
- * @Date: 2018-10-14 16:02:56 
- * @Last Modified by:   Jan-superman 
- * @Last Modified time: 2018-10-14 16:02:56 
- */
+
 
 import fetch from 'dva/fetch';
 import { Toast } from 'antd-mobile';
