@@ -15,3 +15,8 @@ export async function rtsGetCategorysList(params) {
 export async function rtsGetSubcategories(params) {
   return request(`${apiUrlfun('mall')}/v1/subcategories?${stringify(params)}`);
 }
+
+export async function getTest(params) {
+  return request(params);
+}
+

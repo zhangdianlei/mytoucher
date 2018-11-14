@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     onGetSmsCode: (mobile) => {
 
       const action = {
-        type: `${namespace}/getSmsCode`,
+        type: `${namespace}/queryInitCards`,
         payload: mobile,
       };
       dispatch(action);
