@@ -34,7 +34,7 @@ const tabBarData = [
     title: '登录',
     icon: 'wode',
     selectedIcon: 'wode',
-    link: '/me',
+    link: '/login',
   },
 ];
 
