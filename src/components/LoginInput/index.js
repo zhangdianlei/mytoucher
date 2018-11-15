@@ -8,23 +8,37 @@ const namespace = 'loginModel';
 
 const mapStateToProps = (state) => {
   const result = state[namespace].list;
-  console.log(result);
-  return{
-    result
-  }
+  return {
+    result,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetSmsCode: (mobile) => {
+    onGetSmsCode: (mobile, token) => {
 
       const action = {
-        type: `${namespace}/queryInitCards`,
-        payload: mobile,
+        type: `${namespace}/getSmsCode`,
+        payload: {
+          mobile: mobile,
+          token: token,
+        },
       };
       dispatch(action);
 
     },
+    onAuth: (mobile, smsCode, token) => {
+      const action = {
+        type: `${namespace}/auth`,
+        payload: {
+          mobile: mobile,
+          smsCode: smsCode,
+          token: token,
+        },
+      };
+      dispatch(action);
+    }
+
 
   };
 };
@@ -37,7 +51,7 @@ const mapDispatchToProps = (dispatch) => {
 class LoginInput extends React.Component {
   state = {
     mobile: 0,
-    smsCode: '123456',
+    smsCode: '',
     inputSmsCode: '',
     time: 60,
     phoneError: false,
@@ -47,13 +61,30 @@ class LoginInput extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.loginModel.type) {
-      console.log('处理url地址');
+    const token = this.props.loginModel.token;
+
+    if (token !== '') {
+      router.push('/toucherList');
     }
+
   }
 
-  loginSubmit = () => {
-    router.push('/toucherList');
+  loginSubmit = async () => {
+    const mobile = this.state.mobile;
+    const smsCode = this.state.inputSmsCode;
+    const token = this.props.loginModel.token;
+
+    let regPhone = /^((1[3-8][0-9])+\d{8})$/;
+    let regSmsCode = /\d{4}/;
+
+    if (!regPhone.test(mobile) || !regSmsCode.test(smsCode)) {
+      return Toast.fail('请检查手机号是否正确');
+    } else {
+
+      this.props.onAuth(mobile, smsCode, token);
+
+    }
+    // router.push('/toucherList');
   };
 
   onErrorClick = () => {
@@ -72,7 +103,8 @@ class LoginInput extends React.Component {
         time: time || 60,
       });
       this.countDown();
-      this.props.onGetSmsCode(mobile);
+      const token = this.props.loginModel.token;
+      this.props.onGetSmsCode(mobile, token);
 
     }
   };
@@ -145,13 +177,6 @@ class LoginInput extends React.Component {
             placeholder="请输入验证码"
             error={this.state.smsCodeError}
             onChange={inputSmsCode => {
-
-              if (inputSmsCode === this.state.smsCode) {
-                this.state.smsCodeError = false;
-              } else {
-                this.state.smsCodeError = true;
-              }
-              ;
 
               this.setState({
                 inputSmsCode,

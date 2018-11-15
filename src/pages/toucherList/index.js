@@ -16,7 +16,7 @@ class ToucherList extends PureComponent {
     return (
       <div>
         <WhiteSpace size="md" />
-        <Button type="default" icon="plus" size={'large'} block onClick={this.addToucher}>
+        <Button type="default" icon="plus" block onClick={this.addToucher}>
           新增触达号
         </Button>
         <WhiteSpace size="md" />
